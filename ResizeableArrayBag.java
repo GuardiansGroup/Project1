@@ -1,22 +1,22 @@
 import java.util.Arrays;
 public final class ResizeableArrayBag<T> implements BagInterface<T>
 {
-	private T[] bag; // Cannot be final due to doubling
-	private int numberOfEntries;
+   private T[] bag; // Cannot be final due to doubling
+   private int numberOfEntries;
    private boolean integrityOK = false;
-	private static final int DEFAULT_CAPACITY = 25; // Initial capacity of bag
-	private static final int MAX_CAPACITY = 10000;
+   private static final int DEFAULT_CAPACITY = 25; // Initial capacity of bag
+   private static final int MAX_CAPACITY = 10000;
 
 	/** Creates an empty bag whose initial capacity is 25. */
-	public ResizeableArrayBag() 
-	{
-		this(DEFAULT_CAPACITY);
-	} // end default constructor
+   public ResizeableArrayBag() 
+   {
+      this(DEFAULT_CAPACITY);
+   } // end default constructor
 
 	/** Creates an empty bag having a given initial capacity.
 	    @param initialCapacity  The integer capacity desired. */
-	public ResizeableArrayBag(int initialCapacity)
-	{
+   public ResizeableArrayBag(int initialCapacity)
+   {
       checkCapacity(initialCapacity);
       
       // The cast is safe because the new array contains null entries
@@ -40,9 +40,9 @@ public final class ResizeableArrayBag<T> implements BagInterface<T>
 	/** Adds a new entry to this bag.
        @param newEntry  The object to be added as a new entry.
        @return  True. */
-	public boolean add(T newEntry)
-	{
-		checkintegrity();
+   public boolean add(T newEntry)
+   {
+      checkintegrity();
       if (isArrayFull())
       {
          doubleCapacity();
@@ -52,13 +52,13 @@ public final class ResizeableArrayBag<T> implements BagInterface<T>
       numberOfEntries++;
       
       return true;
-	} // end add
+   } // end add
 
 	/** Retrieves all entries that are in this bag.
        @return  A newly allocated array of all the entries in this bag. */
-	public T[] toArray() 
-	{
-		checkintegrity();
+   public T[] toArray() 
+   {
+      checkintegrity();
       
       // The cast is safe because the new array contains null entries.
       @SuppressWarnings("unchecked")
@@ -69,28 +69,28 @@ public final class ResizeableArrayBag<T> implements BagInterface<T>
       } // end for
       
       return result;
-	} // end toArray
+   } // end toArray
    
 	/** Sees whether this bag is empty.
        @return  True if this bag is empty, or false if not. */
-	public boolean isEmpty()
-	{
+   public boolean isEmpty()
+   {
       return numberOfEntries == 0;
-	} // end isEmpty
+   } // end isEmpty
    
 	/** Gets the current number of entries in this bag.
        @return  The integer number of entries currently in this bag. */
-	public int getCurrentSize()
-	{
+   public int getCurrentSize()
+   {
       return numberOfEntries;
-	} // end getCurrentSize
+   } // end getCurrentSize
    
 	/** Counts the number of times a given entry appears in this bag.
        @param anEntry  The entry to be counted.
        @return  The number of times anEntry appears in this ba. */
-	public int getFrequencyOf(T anEntry)
-	{
-		checkintegrity();
+   public int getFrequencyOf(T anEntry)
+   {
+      checkintegrity();
       int counter = 0;
       
       for (int index = 0; index < numberOfEntries; index++)
@@ -102,105 +102,105 @@ public final class ResizeableArrayBag<T> implements BagInterface<T>
       } // end for
       
       return counter;
-	} // end getFrequencyOf
+   } // end getFrequencyOf
    
 	/** Tests whether this bag contains a given entry.
        @param anEntry  The entry to locate.
        @return  True if this bag contains anEntry, or false otherwise. */
    public boolean contains(T anEntry)
-	{
-		checkintegrity();
+   {
+      checkintegrity();
       return getIndexOf(anEntry) > -1; // or >= 0
-	} // end contains
+   } // end contains
    
 	/** Removes all entries from this bag. */
-	public void clear()
-	{
+   public void clear()
+   {
       while (!isEmpty())
          remove();
-	} // end clear
+   } // end clear
 	
 	/** Removes one unspecified entry from this bag, if possible.
        @return  Either the removed entry, if the removal
        was successful, or null. */
-	public T remove()
-	{
-		checkintegrity();
+   public T remove()
+   {
+      checkintegrity();
       T result = removeEntry(numberOfEntries - 1);
       return result;
-	} // end remove
+   } // end remove
 	
 	/** Removes one occurrence of a given entry from this bag.
        @param anEntry  The entry to be removed.
        @return  True if the removal was successful, or false if not. */
-	public boolean remove(T anEntry)
-	{
-		checkintegrity();
+   public boolean remove(T anEntry)
+   {
+      checkintegrity();
       int index = getIndexOf(anEntry);
       T result = removeEntry(index);
       return anEntry.equals(result);
-	} // end remove
+   } // end remove
    
  	// Locates a given entry within the array bag.
 	// Returns the index of the entry, if located,
 	// or -1 otherwise.
    // Precondition: checkintegrity has been called.
-	private int getIndexOf(T anEntry)
-	{
-		int where = -1;
-		boolean found = false;
-		int index = 0;
+   private int getIndexOf(T anEntry)
+   {
+      int where = -1;
+      boolean found = false;
+      int index = 0;
       
       while (!found && (index < numberOfEntries))
-		{
-			if (anEntry.equals(bag[index]))
-			{
-				found = true;
-				where = index;
-			} // end if
+      {
+         if (anEntry.equals(bag[index]))
+	 {
+	    found = true;
+	    where = index;
+	 } // end if
          index++;
 		} // end while
       
       // Assertion: If where > -1, anEntry is in the array bag, and it
       // equals bag[where]; otherwise, anEntry is not in the array.
       
-		return where;
-	} // end getIndexOf
+      return where;
+   } // end getIndexOf
    
    // Removes and returns the entry at a given index within the array.
    // If no such entry exists, returns null.
    // Precondition: 0 <= givenIndex < numberOfEntries.
    // Precondition: checkintegrity has been called.
-	private T removeEntry(int givenIndex)
-	{
-		T result = null;
+   private T removeEntry(int givenIndex)
+   {
+      T result = null;
       
-		if (!isEmpty() && (givenIndex >= 0))
-		{
+      if (!isEmpty() && (givenIndex >= 0))
+      {
          result = bag[givenIndex];          // Entry to remove
          int lastIndex = numberOfEntries - 1;
          bag[givenIndex] = bag[lastIndex];  // Replace entry to remove with last entry
          bag[lastIndex] = null;             // Remove reference to last entry
          numberOfEntries--;
-		} // end if
+      } // end if
       
       return result;
-	} // end removeEntry
+   } // end removeEntry
    
    // Returns true if the array bag is full, or false if not.
-	private boolean isArrayFull()
-	{
-		return numberOfEntries >= bag.length;
-	} // end isArrayFull
+   private boolean isArrayFull()
+   {
+      return numberOfEntries >= bag.length;
+   } // end isArrayFull
    
    // Doubles the size of the array bag.
    // Precondition: checkInitialization has been called.
-	private void doubleCapacity()
-	{
+   private void doubleCapacity()
+   {
       int newLength = 2 * bag.length;
       checkCapacity(newLength);
       bag = Arrays.copyOf(bag, newLength);
-	} // end doubleCapacity
+   } // end doubleCapacity
    
    // Throws an exception if the client requests a capacity that is too large.
    private void checkCapacity(int capacity)
@@ -216,5 +216,25 @@ public final class ResizeableArrayBag<T> implements BagInterface<T>
       if (!integrityOK)
          throw new SecurityException ("ArrayBag object is corrupt.");
    } // end checkintegrity
+   
+   public BagInterface<T> difference(BagInterface<T> differentBag)
+   {
+      ResizeableArrayBag<T> diff = new ResizeableArrayBag<T>();
+      //goes through each item in the bag with the for loop.
+      for (int d = 0; d < numberOfEntries; d++)
+      {
+         T position = bag[d]; 
+	 //uses if statement to find out if diff has a certain position.
+	 if (!diff.contains(position))
+	 {
+	    int count;
+	    count = getFrequencyOf(position) - differentBag.getFrequencyOf(position);
+	    //uses for loop to add this instance of difference into diff.
+	    for (int i = 0; i < count; i++)
+	       diff.add(position);
+	 }
+      }
+      return diff;
+   }
 
 } // end ResizableArrayBag
