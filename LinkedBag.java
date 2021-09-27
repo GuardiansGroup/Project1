@@ -213,4 +213,23 @@ public final class LinkedBag<T> implements BagInterface<T>
       return diff;
    }
 
+   public BagInterface<T> intersection(BagInterface<T> intersectionBag)
+   {
+      LinkedBag<T> intersection = new LinkedBag<T>(); 
+      T[] result = this.toArray(); 
+
+      for (int = i; i < result.length; i++)
+      {
+         intersection.add(result[i]);
+      }
+      T[] same = intersectionBag.toArray(); 
+
+      for (int i = 0; i < same.length; i++)
+         if (intersection.contains(same[i])) 
+         {
+            intersection.add(same[i]); 
+         }
+      return intersection; 
+   }
+
 } // end LinkedBag1

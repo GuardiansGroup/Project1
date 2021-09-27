@@ -237,4 +237,26 @@ public final class ResizeableArrayBag<T> implements BagInterface<T>
       return diff;
    }
 
+   public BagInterface<T> intersection(BagInterface<T> intersectionBag) {
+
+      BagInterface<T> intersection = new ResizeableArrayBag (); 
+      ResizeableArrayBag<T> result = (ResizeableArrayBag<T>) intersectionBag;
+      BagInterface<T> copyOfintersectionBag = new ResizeableArrayBag<>();
+   
+      for(int i = 0; i < numberOfItems; i++) {
+         copyOfintersectionBag.add(result.bag[i]);
+         //adding matching items into intersectionBag
+         for (i=0; i < getCurrentSize(); i++)
+         {
+            if (copyOfintersectionBag.contains(bag[i]))
+            {
+            intersectionBag.add(bag[i]);
+            copyOfintersectionBag.remove(bag[i]);
+            }
+            
+         }
+      }
+      return intersectionBag
+   }
+
 } // end ResizableArrayBag
