@@ -229,6 +229,7 @@ public final class LinkedBag<T> implements BagInterface<T>
          {
             intersection.add(same[i]); 
          }
+         //looking for if they have matching/same elements
       return intersection; 
    }
 

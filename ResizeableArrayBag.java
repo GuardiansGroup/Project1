@@ -245,15 +245,15 @@ public final class ResizeableArrayBag<T> implements BagInterface<T>
    
       for(int i = 0; i < result.numberOfItems; i++) {
          copyOfOtherBag.add(result.bag[i]);
+         //copying bag
          for (i=0; i < getCurrentSize(); i++)
          {
-            if (copyOfOtherBag.contains(bag[i]))
-            //copying bag
+            if (copyOfOtherBag.contains(bag[i])) 
             {
             intersection.add(bag[i]);
             copyOfOtherBag.remove(bag[i]);
             }
-            //adding matching items to intersection and removing it from otherBag
+            //adding matching elements to intersection and removing it from otherBag
          }
       }
       return intersection;
