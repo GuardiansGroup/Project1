@@ -30,6 +30,9 @@ public class LinkedBagTest
       //implementing difference method
       System.out.println("bag1 difference to bag2 is: " + Arrays.toString(bag1.difference(bag2).toArray()));
 
+      //implementing intersection method
+      System.out.println("bag 1 intersection to bag2 is: " + Arrays.toString(bag1.intersection(bag2).toArray()));
+
    }
 
 }

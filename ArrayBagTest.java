@@ -26,10 +26,13 @@ public class ArrayBagTest
       
       //implementing the union method
       System.out.println("bag1 union to bag2 is: " + Arrays.toString(bag1.union(bag2).toArray()));
-      
+
       //implementing the difference method
       System.out.println("bag1 difference to bag2 is: "
                          + Arrays.toString(bag1.difference(bag2).toArray()));
+
+      //implmenting intersection method  
+      System.out.println("intersection of bag1 and bag2 is: " + Array.toString(bag1.intersection(bag2).toArray())); 
    }
 
 }
