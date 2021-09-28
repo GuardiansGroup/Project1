@@ -217,14 +217,14 @@ public final class LinkedBag<T> implements BagInterface<T>
    {
       LinkedBag<T> intersection = new LinkedBag<T>(); 
       T[] result = this.toArray(); 
-
-      for (int = i; i < result.length; i++)
+      int i;
+      for (i =0 ; i < result.length; i++)
       {
          intersection.add(result[i]);
       }
       T[] same = intersectionBag.toArray(); 
 
-      for (int i = 0; i < same.length; i++)
+      for (i = 0; i < same.length; i++)
          if (intersection.contains(same[i])) 
          {
             intersection.add(same[i]); 
