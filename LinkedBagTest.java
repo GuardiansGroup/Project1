@@ -26,6 +26,9 @@ public class LinkedBagTest
       
       //implementing union method
       System.out.println("bag1 union to bag2 is: " + Arrays.toString(bag1.union(bag2).toArray()));
+      
+      //implementing difference method
+      System.out.println("bag1 difference to bag2 is: " + Arrays.toString(bag1.difference(bag2).toArray()));
 
    }
 
