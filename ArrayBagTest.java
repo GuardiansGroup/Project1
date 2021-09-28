@@ -32,7 +32,7 @@ public class ArrayBagTest
                          + Arrays.toString(bag1.difference(bag2).toArray()));
 
       //implmenting intersection method  
-      System.out.println("intersection of bag1 and bag2 is: " + Array.toString(bag1.intersection(bag2).toArray())); 
+      System.out.println("intersection of bag1 and bag2 is: " + Arrays.toString(bag1.intersection(bag2).toArray())); 
    }
 
 }
