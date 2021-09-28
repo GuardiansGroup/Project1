@@ -52,4 +52,6 @@ public interface BagInterface<T>
     public BagInterface<T> difference(BagInterface<T> differentBag);
 
     public BagInterface<T> intersection(BagInterface<T> intersectionBag); 
+    
+    public BagInterface<T> union(BagInterface<T> differentBag);
 }
