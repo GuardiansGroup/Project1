@@ -1,3 +1,7 @@
+/**
+ * 
+ * Name: Daniel & Scarlet
+ */
 /** An interface that describes the operations of a bag of objects. */
 public interface BagInterface<T>
 {
