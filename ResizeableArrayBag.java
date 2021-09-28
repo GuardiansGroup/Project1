@@ -243,7 +243,8 @@ public final class ResizeableArrayBag<T> implements BagInterface<T>
       ResizeableArrayBag<T> result = (ResizeableArrayBag<T>)otherBag;
       BagInterface<T> copyOfOtherBag = new ResizeableArrayBag<>();
    
-      for(int i = 0; i < result.numberOfEntries; i++) {
+      int i;
+      for(i = 0; i < result.numberOfEntries; i++) {
          copyOfOtherBag.add(result.bag[i]);
          //copying bag
          for (i=0; i < getCurrentSize(); i++)
