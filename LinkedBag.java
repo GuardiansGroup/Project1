@@ -232,5 +232,23 @@ public final class LinkedBag<T> implements BagInterface<T>
          //looking for if they have matching/same elements
       return intersection; 
    }
+   
+   public BagInterface<T> union(BagInterface<T> differentBag)
+   {
+      LinkedBag<T> union = new LinkedBag<T>();
+      T[] copy = differentBag.toArray();
+      for (int i = 0; i < copy.length; i++)
+      {
+         union.add(copy[i]);
+      }
+      
+      T[] pair = this.toArray();
+      
+      for (int i = 0; i < pair.length; i++)
+      {
+         union.add(pair[i]);
+      }
+      return union;
+   }
 
 } // end LinkedBag1
