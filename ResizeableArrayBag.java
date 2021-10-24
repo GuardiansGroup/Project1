@@ -259,5 +259,22 @@ public final class ResizeableArrayBag<T> implements BagInterface<T>
       }
       return intersection;
    }
+   
+   public BagInterface<T> union(BagInterface<T> differentBag)
+   {
+      ResizeableArrayBag<T> union = new ResizeableArrayBag<T>();
+      T[] copy = this.toArray();
+      for (int i = 0; i < copy.length; i++)
+      {
+         union.add(copy[i]);
+      }
+      T[] pair = differentBag.toArray();
+      for (int i = 0; i < pair.length; i++)
+      {
+         union.add(pair[i]);
+      }
+      return union;
+   }
 
 } // end ResizableArrayBag
+
